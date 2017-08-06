@@ -73,8 +73,8 @@ Arguments (Optional):| Description
 -i or I              |  Host to post JSON Stream via REST. Default is 127.0.0.1
 -p or P              |  Port to post JSON Stream via REST. Default is 8090
 -u or U              |  UDP Port to listen for protobuf Stream. Default is 30000
--b or B              |  Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
--j or J              |  IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
+-b or B              |  Size of packet being sent by protobuf. Default is 65535. **Leave it alone if you're not having problems**
+-j or J              |  IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. **Default is 0.0.0.0.**
 
 ## Example:
 
