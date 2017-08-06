@@ -61,7 +61,7 @@ pip install requests
 pip install json
 pip install socket
 ```
-## Usage Help and Example:
+## Usage:
 - - - -
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 - - - -
@@ -76,6 +76,8 @@ optional arguments:  | Description
 -b or B              |  Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
 -j or J              |  IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
 
+## Example
+- - - -
 ```
 root@localhost# python convert_gpb_to_json.py -i 10.3.3.2 -p 8090 -u 30000 -l -r -b 65535
 
