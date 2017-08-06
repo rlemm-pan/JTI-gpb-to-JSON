@@ -136,15 +136,16 @@ while True:
     log_http()
     gpb_data, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
     try:
-        for y in variables:
-            y.ParseFromString(gpb_data)
-            y = json.dumps(protobuf_to_dict(y, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
-            y = json.loads(y)
-            roomKey = y['system_id']
-            timestamp = y['timestamp']
+        for gpb_stream in variables:
+            gpb_stream.ParseFromString(gpb_data)
+            json_data = json.dumps(protobuf_to_dict(gpb_stream, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
+            json_data = json.loads(json_data)
+            roomKey = json_data['system_id']
+            timestamp = json_data['timestamp']
             data = {'collection_name': 'jdi_usage_collection', 'data': {'Timestamp': timestamp, \
-                    'roomKey': roomKey, 'jti_info': y}, 'tailwind_manager': {}}
-            json_data = json.dumps(data).replace("\\", "").replace('""', '"').replace("u'", "'")
-            post_url(json_data)
+                    'roomKey': roomKey, 'jti_info': json_data}, 'tailwind_manager': {}}
+            json_data = json.dumps(data).replace("u'", "'")
+            print json_data
+            # post_url(json_data)
     except:
         pass
