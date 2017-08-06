@@ -20,6 +20,7 @@ from port_pb2 import *
 from google.protobuf.json_format import *
 from protobuf_to_dict import protobuf_to_dict, TYPE_CALLABLE_MAP
 
+#Telemetry
 Telemetry_Stream = TelemetryStream()
 IETF_Sensors = IETFSensors()
 Enterprise_Sensors = EnterpriseSensors()
