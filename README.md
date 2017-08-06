@@ -19,11 +19,52 @@ services {
             format gpb;
             transport udp;
         }
+        sensor cube-usage {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/services/cube/usage/;
+        }                               
+        sensor label-switched-path-usage {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/services/label-switched-path/usage/;
+        }
+        sensor mgmt-cube-usage {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/services/mgmt-cube/usage/;
+        }
+        sensor linecard-cpu-memory {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/system/linecard/cpu/memory/;
+        }
+        sensor linecard-fabric {
+            server-name telemetry-server;
+            export-name appformix;      
+            resource /junos/system/linecard/fabric/;
+        }
+        sensor linecard-firewall {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/system/linecard/firewall/;
+        }
+        sensor linecard-interface {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/system/linecard/interface/;
+            resource-filter ge-*;
+        }
         sensor linecard-interface-logical-usage {
             server-name telemetry-server;
             export-name appformix;
             resource /junos/system/linecard/interface/logical/usage/;
             resource-filter ge-*;
+        }
+        sensor linecard-npu-memory {
+            server-name telemetry-server;
+            export-name appformix;
+            resource /junos/system/linecard/npu/memory/;
         }
     }
 }
