@@ -32,17 +32,6 @@ def log_http():
     requests_log.setLevel(logging.DEBUG)
     requests_log.propagate = True
 
-#Logical Port
-Logical_Port = LogicalPort()
-Logical_Interface_Info = LogicalInterfaceInfo()
-Ingress_Interface_Stats = IngressInterfaceStats()
-Egress_Interface_Stats = EgressInterfaceStats()
-Operational_State = OperationalState()
-Forwarding_Class_Accounting = ForwardingClassAccounting()
-logical_Interface_Queue_Stats = logicalInterfaceQueueStats()
-
-#Telemetry Top
-Telemetry_Field_Options = TelemetryFieldOptions()
 Telemetry_Stream = TelemetryStream()
 IETF_Sensors = IETFSensors()
 Enterprise_Sensors = EnterpriseSensors()
@@ -111,8 +100,6 @@ Cpu_Memory_Utilization = CpuMemoryUtilization()
 Cpu_Memory_Utilization_Summary = CpuMemoryUtilizationSummary()
 Cpu_Memory_Utilization_Per_Application = CpuMemoryUtilizationPerApplication()
 
-variables = [Telemetry_Stream]
-
 IP = "0.0.0.0"
 UDP_PORT = 30000
 APPFORMIX_IP = '127.0.0.1'
@@ -136,7 +123,7 @@ while True:
     log_http()
     gpb_data, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
     try:
-        for gpb_stream in variables:
+        for gpb_stream in [Telemetry_Stream]:
             gpb_stream.ParseFromString(gpb_data)
             json_data = json.dumps(protobuf_to_dict(gpb_stream, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
             json_data = json.loads(json_data)
@@ -145,7 +132,6 @@ while True:
             data = {'collection_name': 'jdi_usage_collection', 'data': {'Timestamp': timestamp, \
                     'roomKey': roomKey, 'jti_info': json_data}, 'tailwind_manager': {}}
             json_data = json.dumps(data).replace("u'", "'")
-            print json_data
-            # post_url(json_data)
+            post_url(json_data)
     except:
         pass
