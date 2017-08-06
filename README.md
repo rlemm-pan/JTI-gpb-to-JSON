@@ -76,12 +76,20 @@ interfaces {
 }
 
 
-## Requirements:
+## Requirements needed by Python:
 http_client
+
 http
+
 google.protobuf
+
 protobuf_to_dict
+
 urllib
+
 requests
+
 json
+
 socket
+
