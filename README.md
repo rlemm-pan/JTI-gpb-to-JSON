@@ -111,10 +111,9 @@ pip install socket
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 
 optional arguments:
-
-  -h, --help  show this help message and exit
-  
-  -l|log JSON to Screen
+------------- | -------------
+  -h,         |  --help  show this help message and exit
+  -l          |log JSON to Screen
   
   -r|Log HTTP Requests
   
