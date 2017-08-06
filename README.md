@@ -93,3 +93,12 @@ json
 
 socket
 
+## Requirements needed for PIP:
+pip install protobuf
+pip install protobuf_to_dict
+
+## Requirements needed for Linux Host:
+apt-get install netcat
+apt-get install protobuf-compiler
+apt-get install libprotobuf-dev
+
