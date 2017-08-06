@@ -101,7 +101,7 @@ parser.add_argument("-l", action="store_false",
                     help="log JSON to Screen")
 
 parser.add_argument("-r", action="store_false",
-                    help="Log HTTP Requests")
+                    help="Log HTTP Requests to Screen")
 
 parser.add_argument("-i", action="store",
                     help="Host to post JSON Stream via REST.  Default is 127.0.0.1")
