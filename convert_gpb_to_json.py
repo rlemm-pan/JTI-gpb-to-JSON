@@ -97,6 +97,9 @@ buffer_size = 65535
 
 parser = argparse.ArgumentParser(add_help=True)
 
+parser.add_argument("-g", action="store_false",
+                    help="log GPB Stream to Screen")
+
 parser.add_argument("-l", action="store_false",
                     help="log JSON Stream to Screen")
 
@@ -128,6 +131,10 @@ if args.r is False:
     http_log_enabled = 1
 elif args.r is True:
     http_log_enabled = 0
+if args.g is False:
+    print_gpb = 1
+elif args.g is True:
+    print_gpb = 0
 if args.j:
     ip = args.j
 if args.u:
@@ -161,22 +168,47 @@ def log_http():
     requests_log.propagate = True
 
 def post_url(json_data):
-    global print_json, http_log_enabled, rest_ip, rest_port, url, json_header
-    if print_json == 1 and http_log_enabled == 0:
+    global print_json, http_log_enabled, rest_ip, rest_port, url, json_header, gpb_data, print_gpb
+    if print_json == 1 and http_log_enabled == 0 and print_gpb == 0:
         print json_data
         requests.post(url=url, data=json_data, headers=json_header)
-    elif http_log_enabled == 1 and print_json == 0:
+    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 0:
+        print json_data
         log_http()
         requests.post(url=url, data=json_data, headers=json_header)
-    elif print_json == 1 and http_log_enabled == 1:
+    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 1:
+        print json_data
+        log_http()
+        print gpb_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif http_log_enabled == 1 and print_json == 0 and print_gpb == 0:
+        log_http()
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 0:
         log_http()
         print json_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 1:
+        log_http()
+        print json_data
+        print gpb_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 0 and http_log_enabled == 0 and print_gpb == 1:
+        print gpb_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 0 and http_log_enabled == 1 and print_gpb == 1:
+        log_http()
+        print gpb_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 1 and http_log_enabled == 0 and print_gpb == 1:
+        print json_data
+        print gpb_data
         requests.post(url=url, data=json_data, headers=json_header)
     else:
         requests.post(url=url, data=json_data, headers=json_header)
 
 def stream_gpb_to_json():
-    global buffer_size
+    global buffer_size, gpb_data
     while True:
         junos_telemetry_info_stream, addr = socket.recvfrom(buffer_size)
         try:
