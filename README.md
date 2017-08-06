@@ -79,6 +79,8 @@ interfaces {
 ## Requirements needed by Python:
 http_client
 
+httplib
+
 http
 
 google.protobuf
