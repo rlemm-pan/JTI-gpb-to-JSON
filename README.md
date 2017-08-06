@@ -68,7 +68,8 @@ usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 ***Arguments (Optional):***| ***Description***
 -------------------- | ----------------------------------------------
 **-h, --help**           |  --help  show this help message and exit
-**-l**                   |  Log JSON to Screen
+**-g**                   |  Log GPB Stream to Screen
+**-l**                   |  Log JSON Stream to Screen
 **-r**                   |  Log HTTP Requests to Screen
 **-i or I**              |  Host to post JSON Stream via REST. **Default is 127.0.0.1**
 **-p or P**              |  Port to post JSON Stream via REST. **Default is 8090**
