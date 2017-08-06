@@ -62,9 +62,9 @@ pip install json
 pip install socket
 ```
 ## Usage Help and Example:
-```
+- - - -
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
-```
+- - - -
 optional arguments:  | Description
 -------------------- | ----------------------------------------------
 -h, --help           |  --help  show this help message and exit
