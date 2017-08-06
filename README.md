@@ -2,10 +2,15 @@ This script was created to translate JUNOS Telemetry Info from Google Protocol B
 Below is a JUNOS Configuration example needed to stream telemetry info in GPB format via UDP.
 
 services {
+
     analytics {
+    
         streaming-server telemetry-server {
+        
             remote-address 10.3.3.2;
+            
             remote-port 30000;
+            
         }
         export-profile appformix {
             local-address 10.255.1.2;
