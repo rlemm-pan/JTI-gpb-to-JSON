@@ -113,20 +113,23 @@ Cpu_Memory_Utilization_Per_Application = CpuMemoryUtilizationPerApplication()
 
 variables = [Telemetry_Stream]
 
-UDP_IP = "0.0.0.0"
+IP = "0.0.0.0"
 UDP_PORT = 30000
+APPFORMIX_IP = '127.0.0.1'
+APPFORMIX_PORT = '8090'
 
 socket = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
-socket.bind((UDP_IP, UDP_PORT))
+
+socket.bind((IP, UDP_PORT))
 
 roomKey = ''
 collection_name = ''
-url = 'http://127.0.0.1:8090/version/2.0/post_event'
+url = 'http://'+APPFORMIX_IP+':'+APPFORMIX_PORT+'/version/2.0/post_event'
 HEADERS = {'content-type': 'application/json'}
 
 def post_url(json_data):
-    # print json_data
+    print json_data
     requests.post(url=url, data=json_data, headers=HEADERS)
 
 while True:
