@@ -114,9 +114,9 @@ optional arguments:
 
   -h, --help  show this help message and exit
   
-  -l          log JSON to Screen
+  -l|log JSON to Screen
   
-  -r          Log HTTP Requests
+  -r|Log HTTP Requests
   
   -i          Host to post JSON Stream via REST. Default is 127.0.0.1
   
