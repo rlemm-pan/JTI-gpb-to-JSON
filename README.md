@@ -78,7 +78,7 @@ interfaces {
     
 }
 
-## Requirements needed for Linux Host:
+## Requirements for Linux Host:
 
 apt-get install netcat
 
@@ -88,29 +88,23 @@ apt-get install libprotobuf-dev
 
 apt-get install pip
 
-## Requirements for PIP:
+## Required modules for Python:
 
 pip install protobuf
 
 pip install protobuf_to_dict
 
-## Requirements needed by Python:
+pip install http_client
 
-http_client
+pip install httplib
 
-httplib
+pip install http
 
-http
+pip install urllib
 
-google.protobuf
+pip install requests
 
-protobuf_to_dict
+pip install json
 
-urllib
-
-requests
-
-json
-
-socket
+pip install socket
 
