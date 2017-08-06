@@ -2,9 +2,7 @@
 import requests
 import json
 import time
-import datetime
 import os
-import glob
 import logging
 import socket
 import sys
