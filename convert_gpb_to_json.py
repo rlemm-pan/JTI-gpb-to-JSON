@@ -88,20 +88,21 @@ Cpu_Memory_Utilization = CpuMemoryUtilization()
 Cpu_Memory_Utilization_Summary = CpuMemoryUtilizationSummary()
 Cpu_Memory_Utilization_Per_Application = CpuMemoryUtilizationPerApplication()
 
-IP = "0.0.0.0"
-UDP_PORT = 30000
-APPFORMIX_IP = '127.0.0.1'
-APPFORMIX_PORT = '8090'
+ip = "0.0.0.0"
+udp_port = 30000
+appformix_ip = '127.0.0.1'
+appformix_port = '8090'
+buffer_size = 65535
 
 socket = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
 
-socket.bind((IP, UDP_PORT))
+socket.bind((ip, udp_port))
 
 roomKey = ''
 collection_name = ''
-url = 'http://'+APPFORMIX_IP+':'+APPFORMIX_PORT+'/version/2.0/post_event'
-HEADERS = {'content-type': 'application/json'}
+url = 'http://'+appformix_ip+':'+appformix_port+'/version/2.0/post_event'
+json_header = {'content-type': 'application/json'}
 
 parser = argparse.ArgumentParser(add_help=True)
 
@@ -139,20 +140,20 @@ def post_url(json_data):
     global print_json, http_log_enabled
     if print_json == 1 and http_log_enabled == 0:
         print json_data
-        requests.post(url=url, data=json_data, headers=HEADERS)
+        requests.post(url=url, data=json_data, headers=json_header)
     elif http_log_enabled == 1 and print_json == 0:
         log_http()
-        requests.post(url=url, data=json_data, headers=HEADERS)
+        requests.post(url=url, data=json_data, headers=json_header)
     elif print_json == 1 and http_log_enabled == 1:
         log_http()
         print json_data
-        requests.post(url=url, data=json_data, headers=HEADERS)
+        requests.post(url=url, data=json_data, headers=json_header)
     else:
-        requests.post(url=url, data=json_data, headers=HEADERS)
+        requests.post(url=url, data=json_data, headers=json_header)
 
 def stream_gpb_to_json():
     while True:
-        junos_telemetry_info_stream, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
+        junos_telemetry_info_stream, addr = socket.recvfrom(buffer_size) # buffer size is 1024 bytes
         try:
             for gpb_data in [Telemetry_Stream]:
                 gpb_data.ParseFromString(junos_telemetry_info_stream)
