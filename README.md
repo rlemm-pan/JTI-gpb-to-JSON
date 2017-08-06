@@ -108,7 +108,7 @@ pip install socket
 
 ## Usage Help and Example:
 
-usage: convert_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
+usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 
 optional arguments:
 
