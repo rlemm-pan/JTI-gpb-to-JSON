@@ -115,21 +115,16 @@ Content Cell  | Content Cell
          
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 
-optional arguments:  |    
--------------------- | -------------------
-  -h,                |  --help  show this help message and exit
-  -l                 |  Log JSON to Screen
-  -r                 |  Log HTTP Requests
-  
-  -i          Host to post JSON Stream via REST. Default is 127.0.0.1
-  
-  -p          Port to post JSON Stream via REST. Default is 8090
-  
-  -u          UDP Port to listen for protobuf Stream. Default is 30000
-  
-  -b          Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
-              
-  -j          IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
+optional arguments:  | Description
+-------------------- | ----------------------------------------------
+-h                   |  --help  show this help message and exit
+-l                   |  Log JSON to Screen
+-r                   |  Log HTTP Requests
+-i                   |  Host to post JSON Stream via REST. Default is 127.0.0.1
+-p                   |  Port to post JSON Stream via REST. Default is 8090
+-u                   |  UDP Port to listen for protobuf Stream. Default is 30000
+-b                   |  Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
+-j                   |  IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
 
 
 root@localhost# python convert_gpb_to_json.py -i 10.3.3.2 -p 8090 -u 30000 -l -r -b 65535
