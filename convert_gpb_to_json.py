@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import requests
+import argparse
 import json
 import os
 import logging
@@ -18,19 +19,6 @@ from packet_stats_pb2 import *
 from port_pb2 import *
 from google.protobuf.json_format import *
 from protobuf_to_dict import protobuf_to_dict, TYPE_CALLABLE_MAP
-
-def log_http():
-    try:
-        import http.client as http_client
-    except ImportError:
-        import httplib as http_client
-
-    http_client.HTTPConnection.debuglevel = 1
-    logging.basicConfig()
-    logging.getLogger().setLevel(logging.DEBUG)
-    requests_log = logging.getLogger("requests.packages.urllib3")
-    requests_log.setLevel(logging.DEBUG)
-    requests_log.propagate = True
 
 Telemetry_Stream = TelemetryStream()
 IETF_Sensors = IETFSensors()
@@ -115,23 +103,68 @@ collection_name = ''
 url = 'http://'+APPFORMIX_IP+':'+APPFORMIX_PORT+'/version/2.0/post_event'
 HEADERS = {'content-type': 'application/json'}
 
-def post_url(json_data):
-    print json_data
-    requests.post(url=url, data=json_data, headers=HEADERS)
+parser = argparse.ArgumentParser(add_help=True)
 
-while True:
-    log_http()
-    junos_telemetry_info_stream, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
+parser.add_argument("-l", action="store_false",
+                    help="log JSON to Screen")
+
+parser.add_argument("-r", action="store_false",
+                    help="Log HTTP Requests")
+
+args = parser.parse_args()
+
+if args.l is False:
+    print_json = 1
+elif args.l is True:
+    print_json = 0
+if args.r is False:
+    http_log_enabled = 1
+elif args.r is True:
+    http_log_enabled = 0
+
+def log_http():
     try:
-        for gpb_data in [Telemetry_Stream]:
-            gpb_data.ParseFromString(junos_telemetry_info_stream)
-            json_data = json.dumps(protobuf_to_dict(gpb_data, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
-            json_data = json.loads(json_data)
-            roomKey = json_data['system_id']
-            timestamp = json_data['timestamp']
-            data = {'collection_name': 'jdi_usage_collection', 'data': {'Timestamp': timestamp, \
-                    'roomKey': roomKey, 'jti_info': json_data}, 'tailwind_manager': {}}
-            json_data = json.dumps(data).replace("u'", "'")
-            post_url(json_data)
-    except:
-        pass
+        import http.client as http_client
+    except ImportError:
+        import httplib as http_client
+
+    http_client.HTTPConnection.debuglevel = 1
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
+    requests_log = logging.getLogger("requests.packages.urllib3")
+    requests_log.setLevel(logging.DEBUG)
+    requests_log.propagate = True
+
+def post_url(json_data):
+    global print_json, http_log_enabled
+    if print_json == 1 and http_log_enabled == 0:
+        print json_data
+        requests.post(url=url, data=json_data, headers=HEADERS)
+    elif http_log_enabled == 1 and print_json == 0:
+        log_http()
+        requests.post(url=url, data=json_data, headers=HEADERS)
+    elif print_json == 1 and http_log_enabled == 1:
+        log_http()
+        print json_data
+        requests.post(url=url, data=json_data, headers=HEADERS)
+    else:
+        requests.post(url=url, data=json_data, headers=HEADERS)
+
+def stream_gpb_to_json():
+    while True:
+        junos_telemetry_info_stream, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
+        try:
+            for gpb_data in [Telemetry_Stream]:
+                gpb_data.ParseFromString(junos_telemetry_info_stream)
+                json_data = json.dumps(protobuf_to_dict(gpb_data, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
+                json_data = json.loads(json_data)
+                roomKey = json_data['system_id']
+                timestamp = json_data['timestamp']
+                data = {'collection_name': 'jdi_usage_collection', 'data': {'Timestamp': timestamp, \
+                        'roomKey': roomKey, 'jti_info': json_data}, 'tailwind_manager': {}}
+                json_data = json.dumps(data).replace("u'", "'")
+                post_url(json_data)
+        except:
+            pass
+
+stream_gpb_to_json()
