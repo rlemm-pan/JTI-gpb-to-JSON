@@ -1,5 +1,5 @@
 This script was created to translate JUNOS Telemetry Info from Google Protocol Buffer into JSON Format.  
-Below is a JUNOS Configuration example needed to stream telemetry info in GPB format via UDP.
+Below is a JUNOS Configuration example needed to stream telemetry info in GPB format via UDP.  The script receives GPB data on UDP port 30000, reformats the data into JSON for sending to AppFormix via REST API on tcp port 8090.
 
 services {
 
