@@ -1,6 +1,6 @@
 # Summary
 
-Created to translate JUNOS Telemetry Info from Google Protocol Buffer into JSON Format.  The python script ***convert_gpb_to_json.py*** receives GPB data on a UDP port *(default 30000)*, reformats the data into JSON for sending streaming JSON to AppFormix via REST API on a given tcp port *(8090 default)*.  The IP, Port and packet buffer can be changed/adjusted using optional arguments listed in the ***Usage*** section below:
+Created to translate JUNOS Telemetry Info from Google Protocol Buffer into JSON Format.  The python script ***convert_gpb_to_json.py*** receives GPB data on a UDP port *(default 30000)*, reformats the data into JSON for sending streaming JSON to AppFormix via REST API on a given tcp port *(8090 default)*.  Currently, this is written for Appformix, but can be modified to fit other applications.  The IP, Port and packet buffer can be changed/adjusted using optional arguments listed in the ***Usage*** section below:
 
 ## JUNOS Configuration Example:
 
