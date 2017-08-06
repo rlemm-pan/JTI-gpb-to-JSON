@@ -116,11 +116,10 @@ Content Cell  | Content Cell
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 
 optional arguments:
-------------- | -------------
-  -h,         |  --help  show this help message and exit
-  -l          |log JSON to Screen
-  
-  -r|Log HTTP Requests
+------------------- | -------------------
+  -h,               |  --help  show this help message and exit
+  -l                |  Log JSON to Screen
+  -r                |  Log HTTP Requests
   
   -i          Host to post JSON Stream via REST. Default is 127.0.0.1
   
