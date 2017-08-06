@@ -98,7 +98,7 @@ buffer_size = 65535
 parser = argparse.ArgumentParser(add_help=True)
 
 parser.add_argument("-l", action="store_false",
-                    help="log JSON to Screen")
+                    help="log JSON Stream to Screen")
 
 parser.add_argument("-r", action="store_false",
                     help="Log HTTP Requests to Screen")
