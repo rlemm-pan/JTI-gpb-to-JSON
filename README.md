@@ -62,9 +62,9 @@ pip install json
 pip install socket
 ```
 ## Usage:
-- - - -
+
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
-- - - -
+
 optional arguments:  | Description
 -------------------- | ----------------------------------------------
 -h, --help           |  --help  show this help message and exit
@@ -77,7 +77,7 @@ optional arguments:  | Description
 -j or J              |  IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
 
 ## Example
-- - - -
+
 ```
 root@localhost# python convert_gpb_to_json.py -i 10.3.3.2 -p 8090 -u 30000 -l -r -b 65535
 
