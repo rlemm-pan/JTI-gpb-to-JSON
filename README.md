@@ -22,7 +22,7 @@ services {
             
             local-port 21112;
             
-            reporting-rate 1;
+            reporting-rate 60;
             
             format gpb;
             
