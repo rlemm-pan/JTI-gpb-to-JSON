@@ -124,13 +124,11 @@ optional arguments:
   
   -u U        UDP Port to listen for protobuf Stream. Default is 30000
   
-  -b B        Size of packet being sent by protobuf. Default is 65535. Leave
-  
-              it alone if you're not having problems
+  -b B        Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
               
-  -j J        IP to listen for protobuf Stream. This is usually the local IP
-  
-              of the Host this script runs on. Default is 0.0.0.0.
+  -j J        IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 
+                
+              0.0.0.0.
 
 root@localhost# python convert_gpb_to_json.py -i 10.3.3.2 -p 8090 -u 30000 -l -r -b 65535
 
