@@ -86,8 +86,6 @@ apt-get install protobuf-compiler
 
 apt-get install libprotobuf-dev
 
-apt-get install pip
-
 ## Required modules for Python:
 
 pip install protobuf
