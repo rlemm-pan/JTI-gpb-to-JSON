@@ -1,12 +1,9 @@
 #!/usr/bin/python
 import requests
 import json
-import time
 import os
 import logging
 import socket
-import sys
-from json import *
 from telemetry_top_pb2 import *
 from cpu_memory_utilization_pb2 import *
 from firewall_pb2 import *
@@ -21,17 +18,19 @@ from packet_stats_pb2 import *
 from port_pb2 import *
 from google.protobuf.json_format import *
 from protobuf_to_dict import protobuf_to_dict, TYPE_CALLABLE_MAP
-# try:
-#     import http.client as http_client
-# except ImportError:
-#     import httplib as http_client
-#
-# http_client.HTTPConnection.debuglevel = 1
-# logging.basicConfig()
-# logging.getLogger().setLevel(logging.DEBUG)
-# requests_log = logging.getLogger("requests.packages.urllib3")
-# requests_log.setLevel(logging.DEBUG)
-# requests_log.propagate = True
+
+def log_http():
+    try:
+        import http.client as http_client
+    except ImportError:
+        import httplib as http_client
+
+    http_client.HTTPConnection.debuglevel = 1
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
+    requests_log = logging.getLogger("requests.packages.urllib3")
+    requests_log.setLevel(logging.DEBUG)
+    requests_log.propagate = True
 
 #Logical Port
 Logical_Port = LogicalPort()
@@ -123,14 +122,15 @@ socket.bind((UDP_IP, UDP_PORT))
 
 roomKey = ''
 collection_name = ''
-url = 'http://172.25.137.172:8090/version/2.0/post_event'
+url = 'http://127.0.0.1:8090/version/2.0/post_event'
 HEADERS = {'content-type': 'application/json'}
 
 def post_url(json_data):
-    print json_data
+    # print json_data
     requests.post(url=url, data=json_data, headers=HEADERS)
 
 while True:
+    log_http()
     gpb_data, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
     try:
         for y in variables:
@@ -144,7 +144,4 @@ while True:
             json_data = json.dumps(data).replace("\\", "").replace('""', '"').replace("u'", "'")
             post_url(json_data)
     except:
-        e = sys.exc_info()[0]
-        print e
         pass
-
