@@ -161,7 +161,6 @@ def log_http():
 
 def post_url(json_data):
     global print_json, http_log_enabled, rest_ip, rest_port, url, json_header
-    print ip, udp_port, rest_ip, rest_port, buffer_size
     if print_json == 1 and http_log_enabled == 0:
         print json_data
         requests.post(url=url, data=json_data, headers=json_header)
