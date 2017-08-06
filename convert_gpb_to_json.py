@@ -98,13 +98,13 @@ buffer_size = 65535
 parser = argparse.ArgumentParser(add_help=True)
 
 parser.add_argument("-g", action="store_false",
-                    help="log GPB Stream to Screen")
+                    help="log GPB Stream to Screen.  Default is None")
 
 parser.add_argument("-l", action="store_false",
-                    help="log JSON Stream to Screen")
+                    help="log JSON Stream to Screen.  Default is None")
 
 parser.add_argument("-r", action="store_false",
-                    help="Log HTTP Requests to Screen")
+                    help="Log HTTP Requests to Screen.  Default is None")
 
 parser.add_argument("-i", action="store",
                     help="Host to post JSON Stream via REST.  Default is 127.0.0.1")
@@ -113,7 +113,7 @@ parser.add_argument("-p", action="store",
                     help="Port to post JSON Stream via REST.  Default is 8090")
 
 parser.add_argument("-u", action="store",
-                    help="UDP Port to listen for protobuf Stream.  Default is 30000")
+                    help="UDP Port to listen for GPB protobuf Stream.  Default is 30000")
 
 parser.add_argument("-b", action="store",
                     help="Size of packet being sent by protobuf.  Default is 65535.  Leave it alone if you're not having problems")
