@@ -108,11 +108,7 @@ pip install socket
 
 ## Usage Help and Example:
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-         
+Markup :  _Emphasized text_ or *Emphasized text*
 usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 
 optional arguments:  | Description
