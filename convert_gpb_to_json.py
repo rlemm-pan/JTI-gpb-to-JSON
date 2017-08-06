@@ -116,7 +116,7 @@ parser.add_argument("-u", action="store",
                     help="UDP Port to listen for GPB protobuf Stream.  Default is 30000")
 
 parser.add_argument("-b", action="store",
-                    help="Size of packet being sent by protobuf.  Default is 65535.  Leave it alone if you're not having problems")
+                    help="Max Size of packet being sent by GPB protobuf.  Default is 65535.  Leave it alone if you're not having problems")
 
 parser.add_argument("-j", action="store",
                     help="IP to listen for protobuf Stream.  This is usually the local IP of the Host this script runs on.  Default is 0.0.0.0.")
