@@ -121,11 +121,11 @@ def post_url(json_data):
 
 while True:
     log_http()
-    gpb_data, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
+    junos_telemetry_info_stream, addr = socket.recvfrom(65535) # buffer size is 1024 bytes
     try:
-        for gpb_stream in [Telemetry_Stream]:
-            gpb_stream.ParseFromString(gpb_data)
-            json_data = json.dumps(protobuf_to_dict(gpb_stream, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
+        for gpb_data in [Telemetry_Stream]:
+            gpb_data.ParseFromString(junos_telemetry_info_stream)
+            json_data = json.dumps(protobuf_to_dict(gpb_data, type_callable_map=TYPE_CALLABLE_MAP, use_enum_labels=True))
             json_data = json.loads(json_data)
             roomKey = json_data['system_id']
             timestamp = json_data['timestamp']
