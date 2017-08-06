@@ -4,8 +4,7 @@ This script was created to translate JUNOS Telemetry Info from Google Protocol B
 
 ## JUNOS Configuration Example:
 
-code()
-
+code(
 services {
 
     analytics {
@@ -79,6 +78,7 @@ interfaces {
     }
     
 }
+)
 
 ## Requirements for Linux Host:
 
