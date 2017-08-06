@@ -4,7 +4,7 @@ This script was created to translate JUNOS Telemetry Info from Google Protocol B
 
 ## JUNOS Configuration Example:
 
-'(
+`
 services {
 
     analytics {
@@ -78,8 +78,7 @@ interfaces {
     }
     
 }
-)'
-
+`
 ## Requirements for Linux Host:
 
 apt-get install netcat
