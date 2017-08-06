@@ -118,15 +118,15 @@ optional arguments:
   
   -r          Log HTTP Requests
   
-  -i I        Host to post JSON Stream via REST. Default is 127.0.0.1
+  -i          Host to post JSON Stream via REST. Default is 127.0.0.1
   
-  -p P        Port to post JSON Stream via REST. Default is 8090
+  -p          Port to post JSON Stream via REST. Default is 8090
   
-  -u U        UDP Port to listen for protobuf Stream. Default is 30000
+  -u          UDP Port to listen for protobuf Stream. Default is 30000
   
-  -b B        Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
+  -b          Size of packet being sent by protobuf. Default is 65535. Leave it alone if you're not having problems
               
-  -j J        IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
+  -j          IP to listen for protobuf Stream. This is usually the local IP of the Host this script runs on. Default is 0.0.0.0.
 
 root@localhost# python convert_gpb_to_json.py -i 10.3.3.2 -p 8090 -u 30000 -l -r -b 65535
 
