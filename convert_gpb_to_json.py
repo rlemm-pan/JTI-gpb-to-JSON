@@ -39,6 +39,15 @@ Queue_Stats = QueueStats()
 Interface_Stats = InterfaceStats()
 Ingress_Interface_Errors = IngressInterfaceErrors()
 
+#Logical Port
+Logical_Port = LogicalPort()
+Logical_Interface_Info = LogicalInterfaceInfo()
+Ingress_Interface_Stats = IngressInterfaceStats()
+Egress_Interface_Stats = EgressInterfaceStats()
+Operational_State = OperationalState()
+Forwarding_Class_Accounting = ForwardingClassAccounting()
+logical_Interface_Queue_Stats = logicalInterfaceQueueStats()
+
 #Optics
 Optics = Optics()
 Optics_Infos = OpticsInfos()
