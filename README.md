@@ -109,7 +109,7 @@ usage: convert_gpb_to_json.py [-h] [-l] [-r] [-i I] [-p P] [-u U] [-b B] [-j J]
 ```
 ***Arguments (Optional):***| ***Description***
 -------------------- | ----------------------------------------------
-**-h, --help**           |  --help  show this help message and exit
+**-h, --help**           |  show this help message and exit
 **-g**                   |  Log GPB Stream to Screen.  **Default is None**
 **-l**                   |  Log JSON Stream to Screen.  **Default is None**
 **-r**                   |  Log HTTP Requests to Screen.  **Default is None**
