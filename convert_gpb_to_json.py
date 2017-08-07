@@ -176,22 +176,12 @@ def post_url(json_data):
         print json_data
         log_http()
         requests.post(url=url, data=json_data, headers=json_header)
-    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 1:
-        print json_data
-        log_http()
-        print gpb_data
-        requests.post(url=url, data=json_data, headers=json_header)
-    elif http_log_enabled == 1 and print_json == 0 and print_gpb == 0:
-        log_http()
-        requests.post(url=url, data=json_data, headers=json_header)
-    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 0:
-        log_http()
-        print json_data
-        requests.post(url=url, data=json_data, headers=json_header)
-    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 1:
-        log_http()
+    elif print_json == 1 and http_log_enabled == 0 and print_gpb == 1:
         print json_data
         print gpb_data
+        requests.post(url=url, data=json_data, headers=json_header)
+    elif print_json == 0 and http_log_enabled == 1 and  print_gpb == 0:
+        log_http()
         requests.post(url=url, data=json_data, headers=json_header)
     elif print_json == 0 and http_log_enabled == 0 and print_gpb == 1:
         print gpb_data
@@ -200,8 +190,9 @@ def post_url(json_data):
         log_http()
         print gpb_data
         requests.post(url=url, data=json_data, headers=json_header)
-    elif print_json == 1 and http_log_enabled == 0 and print_gpb == 1:
+    elif print_json == 1 and http_log_enabled == 1 and print_gpb == 1:
         print json_data
+        log_http()
         print gpb_data
         requests.post(url=url, data=json_data, headers=json_header)
     else:
