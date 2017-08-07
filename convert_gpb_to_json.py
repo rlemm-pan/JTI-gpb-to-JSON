@@ -220,7 +220,7 @@ def stream_gpb_to_json():
                 timestamp = json_data['timestamp']
                 data = {'collection_name': 'jdi_usage_collection', 'data': {'Timestamp': timestamp, \
                         'roomKey': roomKey, 'jti_info': json_data}, 'tailwind_manager': {}}
-                json_data = json.dumps(data).replace("u'", "'")
+                json_data = json.dumps(data).encode("utf-8")
                 post_url(json_data)
         except:
             pass
