@@ -20,11 +20,21 @@ from port_pb2 import *
 from google.protobuf.json_format import *
 from protobuf_to_dict import protobuf_to_dict, TYPE_CALLABLE_MAP
 
-#Telemetry
+#Telemetry Top
+Telemetry_Field_Options = TelemetryFieldOptions()
 Telemetry_Stream = TelemetryStream()
 IETF_Sensors = IETFSensors()
 Enterprise_Sensors = EnterpriseSensors()
 Juniper_Networks_Sensors = JuniperNetworksSensors()
+
+#Logical Port
+Logical_Port = LogicalPort()
+Logical_Interface_Info = LogicalInterfaceInfo()
+Ingress_Interface_Stats = IngressInterfaceStats()
+Egress_Interface_Stats = EgressInterfaceStats()
+Operational_State = OperationalState()
+Forwarding_Class_Accounting = ForwardingClassAccounting()
+logical_Interface_Queue_Stats = logicalInterfaceQueueStats()
 
 #Packet Stats
 Packet_Statistics = PacketStatistics()
@@ -38,15 +48,6 @@ Interface_Infos = InterfaceInfos()
 Queue_Stats = QueueStats()
 Interface_Stats = InterfaceStats()
 Ingress_Interface_Errors = IngressInterfaceErrors()
-
-#Logical Port
-Logical_Port = LogicalPort()
-Logical_Interface_Info = LogicalInterfaceInfo()
-Ingress_Interface_Stats = IngressInterfaceStats()
-Egress_Interface_Stats = EgressInterfaceStats()
-Operational_State = OperationalState()
-Forwarding_Class_Accounting = ForwardingClassAccounting()
-logical_Interface_Queue_Stats = logicalInterfaceQueueStats()
 
 #Optics
 Optics = Optics()
@@ -97,6 +98,7 @@ Hierarchical_Policer_Stats = HierarchicalPolicerStats()
 Cpu_Memory_Utilization = CpuMemoryUtilization()
 Cpu_Memory_Utilization_Summary = CpuMemoryUtilizationSummary()
 Cpu_Memory_Utilization_Per_Application = CpuMemoryUtilizationPerApplication()
+
 
 ip = '0.0.0.0'
 udp_port = 30000
